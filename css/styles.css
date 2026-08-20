@@ -444,11 +444,11 @@ ul {
   visibility: visible;
 }
 
-/* --- Panneau de navigation mobile : coulisse depuis la gauche --- */
+/* --- Panneau de navigation mobile : coulisse depuis la droite, côté du bouton burger --- */
 
 .mobile-drawer {
   position: fixed;
-  inset: 0 auto 0 0;
+  inset: 0 0 0 auto;
   z-index: 70;
   display: flex;
   flex-direction: column;
@@ -458,10 +458,10 @@ ul {
   max-width: 85vw;
   padding: var(--space-16) var(--space-5) 30px;
   background: var(--neutre);
-  border-radius: 0 20px 20px 0;
+  border-radius: 20px 0 0 20px;
   box-shadow: var(--shadow-md);
   overflow-y: auto;
-  transform: translateX(-100%);
+  transform: translateX(100%);
   transition: transform 0.32s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
