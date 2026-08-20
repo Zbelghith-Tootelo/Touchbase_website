@@ -1,0 +1,3339 @@
+/* ==========================================================================
+   Touchbase — Feuille de styles principale
+   Sections implémentées : base, en-tête, héro « chaque acteur »
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Base
+   -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  font-family: var(--font-family);
+  font-size: 16px;
+  line-height: var(--leading-body);
+  color: var(--textes);
+  background: var(--neutre);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Masque le contenu visuellement tout en le gardant accessible aux lecteurs d'écran */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Lien d'évitement — premier élément focusable de la page */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: var(--space-4);
+  z-index: 100;
+  padding: var(--space-3) var(--space-5);
+  color: var(--neutre);
+  background: var(--bleu-principal);
+  border-radius: var(--radius-lg);
+  font-weight: 500;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: var(--space-4);
+}
+
+/* Anneau de focus homogène sur toute la page */
+:focus-visible {
+  outline: 2px solid var(--bleu-secondaire);
+  outline-offset: 2px;
+}
+
+/* Conteneur centré de 1200px avec gouttières de 120px */
+.container {
+  width: 100%;
+  max-width: var(--content-max);
+  margin: 0 auto;
+}
+
+/* Pas d'overflow ici : cela ferait de .page un conteneur de défilement
+   et l'en-tête « sticky » cesserait de coller. */
+.page {
+  max-width: var(--page-max);
+  margin: 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   2. Boutons
+   -------------------------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  height: 43px;
+  padding: var(--space-3) var(--space-8);
+  border-radius: var(--radius-lg);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: var(--leading-tight);
+  white-space: nowrap;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.btn--rouge {
+  color: var(--neutre);
+  background: var(--rouge-cta);
+}
+
+.btn--rouge:hover {
+  background: var(--rouge-dark);
+}
+
+/* CTA plein rouge sur fond clair — teinte de marque, distincte du rouge du
+   bouton Connexion (--rouge-cta) et du rouge clair des CTA sur photo. */
+.btn--principal {
+  color: var(--neutre);
+  background: var(--rouge-principal);
+}
+
+.btn--principal:hover {
+  background: var(--rouge-dark);
+}
+
+/* Bouton rond des cartes du héro */
+.btn-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  background: var(--rouge-card);
+  border-radius: var(--radius-full);
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.btn-circle img {
+  width: 16px;
+  height: 16px;
+}
+
+.btn-circle:hover {
+  background: var(--rouge-dark);
+  transform: translateX(2px);
+}
+
+/* --------------------------------------------------------------------------
+   3. En-tête
+   -------------------------------------------------------------------------- */
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--header-height);
+  padding: 0 var(--gutter);
+  background: var(--neutre);
+  border-bottom: 1px solid var(--bordures);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: var(--content-max);
+}
+
+.site-header__logo img {
+  width: 180px;
+  height: 35px;
+}
+
+.site-header__brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.site-header__divider {
+  width: 2px;
+  height: 30px;
+  background: var(--bleu-principal);
+  border-radius: 1px;
+}
+
+.site-header__slogan {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.site-header__flag {
+  width: 25px;
+  height: 28px;
+}
+
+.site-header__slogan-text {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Lexend', var(--font-family);
+  font-size: 14px;
+  line-height: 15px;
+  color: var(--rouge-principal);
+  white-space: nowrap;
+}
+
+.site-header__right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 29px;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.main-nav__link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  height: 45px;
+  padding: var(--space-3) var(--space-3);
+  font-size: 16px;
+  line-height: var(--leading-tight);
+  color: var(--bleu-principal);
+  white-space: nowrap;
+}
+
+/* Le trait rouge se déroule sur la largeur du mot, de la gauche vers la droite. */
+.main-nav__link::after,
+.site-submenu__link::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--rouge-principal);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.32s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.main-nav__link:hover::after,
+.main-nav__link:focus-visible::after,
+.main-nav__link[aria-expanded='true']::after,
+.main-nav__link[aria-current='page']::after,
+.site-submenu__link:hover::after,
+.site-submenu__link:focus-visible::after,
+.site-submenu__link[aria-current='page']::after {
+  transform: scaleX(1);
+}
+
+/* Le lien courant reste souligné : le trait ne se rétracte pas au départ du curseur. */
+.main-nav__link[aria-current='page'],
+.site-submenu__link[aria-current='page'] {
+  font-weight: 700;
+}
+
+/* Le SVG source pointe vers la gauche : vers le bas au repos, vers le haut une
+   fois le sous-menu ouvert. */
+.main-nav__chevron {
+  width: 7.33px;
+  height: 12px;
+  transform: rotate(-90deg);
+  transition: transform 0.28s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.main-nav__link[aria-expanded='true'] .main-nav__chevron {
+  transform: rotate(90deg);
+}
+
+/* --- Sous-menu déroulant --- */
+
+.site-submenu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  padding: 0 var(--gutter) var(--space-3);
+  background: var(--neutre);
+  border-bottom: 1px solid var(--bordures);
+  box-shadow: var(--shadow-base);
+  animation: submenu-in 0.22s ease-out both;
+}
+
+.site-submenu[hidden] {
+  display: none;
+}
+
+@keyframes submenu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+.site-submenu__inner {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  max-width: var(--content-max);
+}
+
+.site-submenu__link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 var(--space-5);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+  color: var(--bleu-principal);
+  white-space: nowrap;
+}
+
+/* Bascule de langue */
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  font-size: 16px;
+  line-height: var(--leading-tight);
+  color: var(--bleu-principal);
+  border: 1px solid var(--bordures);
+  border-radius: var(--radius-lg);
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.lang-toggle:hover {
+  background: var(--lumiere);
+  border-color: var(--bleu-nav-25);
+}
+
+/* Bouton hamburger — visible sous 1024px uniquement */
+.nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  border: 1px solid var(--bordures);
+  border-radius: var(--radius-lg);
+}
+
+.nav-toggle__bar,
+.nav-toggle__bar::before,
+.nav-toggle__bar::after {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--bleu-principal);
+  border-radius: var(--radius-xs);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-toggle__bar::before,
+.nav-toggle__bar::after {
+  content: '';
+  position: absolute;
+}
+
+.nav-toggle__bar::before {
+  transform: translateY(-6px);
+}
+
+.nav-toggle__bar::after {
+  transform: translateY(6px);
+}
+
+.nav-toggle[aria-expanded='true'] .nav-toggle__bar {
+  background: transparent;
+}
+
+.nav-toggle[aria-expanded='true'] .nav-toggle__bar::before {
+  transform: rotate(45deg);
+}
+
+.nav-toggle[aria-expanded='true'] .nav-toggle__bar::after {
+  transform: rotate(-45deg);
+}
+
+/* --------------------------------------------------------------------------
+   4. Héro — « Une solution pour chaque acteur »
+   -------------------------------------------------------------------------- */
+
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-12);
+  padding: 80px var(--gutter) 100px;
+  background-color: var(--lumiere);
+  isolation: isolate;
+}
+
+/* Photo de fond + voile bleu en multiplication, comme dans la maquette.
+   Les deux couches sont fusionnées sur un seul pseudo-élément : c'est bien
+   moins coûteux à composer qu'un mix-blend-mode plein écran. */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: linear-gradient(var(--voile-bleu), var(--voile-bleu)), url('../assets/img/hero-bg.png');
+  background-blend-mode: multiply;
+  background-size: cover;
+  background-position: center;
+}
+
+.hero__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  width: 100%;
+  max-width: var(--content-max);
+  text-align: center;
+  color: var(--neutre);
+}
+
+.hero__title {
+  font-size: 50px;
+  font-weight: 600;
+  line-height: normal;
+  text-wrap: balance;
+}
+
+/* Une seule ligne vide sépare le texte d'intro de la consigne dans la maquette :
+   les deux partagent ce conteneur pour que .hero__header ne leur applique
+   qu'un seul espacement (title → bloc), pas un deuxième entre les deux. */
+.hero__subtitle {
+  width: 100%;
+}
+
+.hero__lead {
+  font-size: 22px;
+  font-weight: 400;
+  line-height: normal;
+  text-wrap: balance;
+}
+
+.hero__note {
+  margin-top: 26px;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: normal;
+}
+
+/* Rangée à hauteur fixe : chaque carte centre son contenu plutôt que de
+   caler illustration/titre/texte/bouton sur des rangées partagées. */
+.hero__cards {
+  display: flex;
+  gap: var(--space-6);
+  height: 300px;
+  width: 100%;
+  max-width: var(--content-max);
+}
+
+.category-card {
+  display: flex;
+  flex: 1 0 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: var(--space-5);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--bordures);
+  border-radius: var(--radius-3xl);
+  box-shadow: var(--shadow-card);
+  text-align: center;
+  color: var(--bleu-principal);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.category-card__media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.category-card__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px 0 rgba(33, 49, 99, 0.18);
+}
+
+/* Les illustrations redessinées ne sont plus fusionnées en multiplication :
+   la maquette applique désormais le tracé tel quel sur la carte translucide.
+   Chacune garde sa taille native (attributs width/height) — c'est la rangée
+   qui les aligne, pas une hauteur imposée. */
+.category-card__illustration {
+  height: auto;
+}
+
+.category-card__title {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.category-card__text {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   5. Section application mobile
+   -------------------------------------------------------------------------- */
+
+.app-section {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  padding: 60px var(--gutter);
+  background: var(--neutre);
+}
+
+.app-section__text {
+  display: flex;
+  flex: 1 0 0;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-8);
+}
+
+.app-section__titles {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.app-section__title {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: normal;
+  color: var(--bleu-principal);
+  text-wrap: balance;
+}
+
+.app-section__lead {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ardoise);
+}
+
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.feature-list__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: normal;
+  color: var(--ardoise-fonce);
+}
+
+.feature-list__icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.store-badges {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.store-badges img {
+  height: 66px;
+  width: auto;
+}
+
+/* Le SVG exporté de Figma est stocké retourné verticalement — on le remet à l'endroit. */
+.store-badges__googleplay img {
+  transform: scaleY(-1);
+}
+
+/* Le maquette téléphone laisse place à la vidéo « Animation Test 2 1 » :
+   même vignette que le héros Nos innovations, donc même composant et même asset. */
+.app-section__visual {
+  --thumb-w: 558px;
+}
+
+/* --------------------------------------------------------------------------
+   6. Bandeau de chiffres clés
+   -------------------------------------------------------------------------- */
+
+.stats-banner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding: 80px var(--gutter);
+  background: var(--bleu-principal);
+  color: var(--neutre);
+}
+
+.stats-banner__title {
+  font-size: 48px;
+  font-weight: 500;
+  line-height: normal;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.stats-banner__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  text-align: center;
+}
+
+.stat__value {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.stat__label {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: normal;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* --------------------------------------------------------------------------
+   7. Bandeau « Vous vous concentrez sur vos clients »
+   -------------------------------------------------------------------------- */
+
+.band {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 783px;
+  padding: 0 var(--gutter) var(--space-10);
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.band::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: linear-gradient(var(--voile-bleu), var(--voile-bleu)), url('../assets/img/band-bg.png');
+  background-blend-mode: multiply;
+  background-size: cover;
+  background-position: center;
+}
+
+.band__title {
+  position: absolute;
+  top: 37px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: var(--content-max);
+  max-width: calc(100% - 2 * var(--gutter));
+  font-size: 64px;
+  font-weight: 400;
+  line-height: var(--leading-tight);
+  text-align: center;
+  color: var(--neutre);
+}
+
+/* La première ligne est en semi-gras, la seconde en normal. */
+.band__title strong {
+  display: block;
+  font-weight: 600;
+}
+
+.band__screens {
+  position: absolute;
+  top: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 850px;
+  height: 566px;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.band__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  width: 992px;
+  max-width: 100%;
+}
+
+.band__lead {
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: center;
+  color: var(--texte-sur-photo);
+  text-wrap: balance;
+}
+
+.band__ctas {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.band__ctas .btn {
+  flex: 1 0 0;
+  min-width: 0;
+  height: auto;
+  padding: var(--space-4) var(--space-8);
+  font-weight: 600;
+  line-height: normal;
+}
+
+.btn--photo-primaire {
+  color: var(--neutre);
+  background: var(--rouge-cta-clair);
+}
+
+.btn--photo-primaire:hover {
+  background: var(--rouge-principal);
+}
+
+.btn--photo-secondaire {
+  color: var(--neutre);
+  border: 1px solid var(--neutre);
+}
+
+.btn--photo-secondaire:hover {
+  color: var(--bleu-principal);
+  background: var(--neutre);
+}
+
+/* --------------------------------------------------------------------------
+   8. Grille de fonctionnalités
+   -------------------------------------------------------------------------- */
+
+.features {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-16);
+  padding: 60px var(--gutter);
+  background: var(--ardoise-surface);
+}
+
+.section-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  width: 100%;
+  text-align: center;
+}
+
+.section-header__title {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: normal;
+  color: var(--bleu-principal);
+  text-wrap: balance;
+}
+
+.section-header__lead {
+  font-size: 16px;
+  line-height: normal;
+  color: var(--ardoise);
+  text-wrap: balance;
+}
+
+.features__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+  width: 100%;
+}
+
+.feature-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: var(--space-5);
+  background: var(--neutre);
+  border: 1px solid var(--ardoise-bordure);
+  border-radius: var(--radius-2xl);
+}
+
+.feature-card__head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  width: 100%;
+}
+
+.feature-card__icon {
+  display: flex;
+  flex-shrink: 0;
+  padding: var(--space-3);
+  background: var(--icone-fond);
+  border-radius: var(--radius-lg);
+}
+
+.feature-card__icon img {
+  width: 24px;
+  height: 24px;
+}
+
+.feature-card__title {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: normal;
+  color: var(--bleu-principal);
+}
+
+.feature-card__text {
+  font-size: 14px;
+  line-height: var(--leading-body);
+  color: var(--ardoise);
+}
+
+.btn--navy {
+  color: var(--neutre);
+  background: var(--bleu-principal);
+  font-weight: 400;
+}
+
+.btn--navy:hover {
+  background: var(--bleu-nav-dark);
+}
+
+/* --------------------------------------------------------------------------
+   10. Logos clients
+   -------------------------------------------------------------------------- */
+
+.client-logos {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 80px var(--gutter);
+  background: var(--neutre);
+}
+
+.client-logos__title {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: normal;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--ardoise);
+}
+
+/* Défilement continu et lent. Les bords s'estompent pour que les logos
+   entrent et sortent sans coupure nette. */
+.client-logos__marquee {
+  overflow: hidden;
+  min-height: 80px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+
+.client-logos__track {
+  display: flex;
+  width: max-content;
+  animation: logos-scroll 45s linear infinite;
+}
+
+/* Le survol met la piste en pause : on peut lire un logo au passage. */
+.client-logos__marquee:hover .client-logos__track,
+.client-logos__marquee:focus-within .client-logos__track {
+  animation-play-state: paused;
+}
+
+/* Trois séries identiques : à -33,333 % on retombe exactement sur la première
+   image de la deuxième, donc la boucle est invisible. Trois et non deux, sinon
+   la piste devient plus courte que la zone visible en fin de cycle et un vide
+   apparaît à droite avant le retour. */
+@keyframes logos-scroll {
+  to {
+    transform: translateX(-33.3333%);
+  }
+}
+
+.client-logos__set {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 80px;
+  min-height: 80px;
+  padding-right: 80px;
+}
+
+.client-logos__set img {
+  object-fit: contain;
+}
+
+/* Logo Keller Williams reconstitué en texte, comme dans la maquette. */
+.kw-logo {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.kw-logo__mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-xs);
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: -2px;
+  line-height: normal;
+  color: #cc0000;
+}
+
+.kw-logo__text {
+  display: flex;
+  flex-direction: column;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: #1a1a1a;
+}
+
+/* --------------------------------------------------------------------------
+   11. Témoignage
+   -------------------------------------------------------------------------- */
+
+.testimonial {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-5) var(--gutter);
+  background: var(--neutre);
+}
+
+.testimonial__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-8);
+  width: 100%;
+  max-width: 1041px;
+  margin: 0;
+}
+
+.testimonial__icon {
+  width: 32px;
+  height: 32px;
+}
+
+.testimonial__quote {
+  margin: 0;
+  font-size: 24px;
+  font-style: italic;
+  line-height: var(--leading-body);
+  color: var(--bleu-principal);
+}
+
+.testimonial__author {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.testimonial__name {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: normal;
+  color: var(--bleu-principal);
+}
+
+.testimonial__role {
+  font-size: 14px;
+  line-height: normal;
+  color: var(--ardoise);
+}
+
+/* Variante utilisée sur la page À propos : voile plus généreux, citation
+   libre d'aller jusqu'au bord de la colonne plutôt que plafonnée à 1041px. */
+.testimonial--wide {
+  padding: var(--space-10) var(--gutter);
+}
+
+.testimonial--wide .testimonial__content {
+  max-width: none;
+}
+
+/* --------------------------------------------------------------------------
+   12. Manifeste « Innovation isn't a feature »
+   -------------------------------------------------------------------------- */
+
+.statement {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6);
+  padding: var(--space-10) var(--gutter);
+  min-height: 329px;
+  color: var(--neutre);
+  text-align: center;
+}
+
+/* Ici le voile est opaque à 90 % : une simple superposition suffit. */
+.statement::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: linear-gradient(var(--voile-bleu-opaque), var(--voile-bleu-opaque)),
+    url('../assets/img/statement-bg.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.statement__title {
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+.statement__title span {
+  display: block;
+}
+
+.statement__lead {
+  font-size: 16px;
+  line-height: normal;
+  color: var(--texte-sur-voile);
+  text-wrap: balance;
+}
+
+/* --------------------------------------------------------------------------
+   13. Encart d'aide
+   -------------------------------------------------------------------------- */
+
+.help {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 52.5px var(--gutter);
+  background: var(--neutre);
+}
+
+.help__panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6);
+  width: var(--content-max);
+  min-height: 181px;
+  padding: var(--space-5) var(--gutter);
+  background: rgba(243, 248, 255, 0.5);
+  border-radius: var(--radius-2xl);
+  text-align: center;
+}
+
+.help__titles {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.help__title {
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--bleu-principal);
+}
+
+.help__lead {
+  font-size: 20px;
+  line-height: 28px;
+  color: var(--textes);
+}
+
+.help__cta {
+  width: 388px;
+  max-width: 100%;
+  height: 42px;
+}
+
+/* --------------------------------------------------------------------------
+   13b. En-tête de page intérieure — commun à toutes les pages hors accueil
+   -------------------------------------------------------------------------- */
+
+.page-hero {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: 64px var(--gutter) 48px;
+  background: var(--lumiere);
+}
+
+.page-hero--center {
+  align-items: center;
+  text-align: center;
+}
+
+.page-hero__eyebrow {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--rouge-principal);
+}
+
+.page-hero__title {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--bleu-principal);
+  text-wrap: balance;
+}
+
+/* Seconde phrase du titre en rouge, comme sur la page Innovation. */
+.page-hero__title em {
+  font-style: normal;
+  color: var(--rouge-principal);
+}
+
+.page-hero__lead {
+  max-width: 760px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ardoise);
+}
+
+/* --- Bandeau « section à venir » ---
+   Assumé et visible : personne ne doit prendre un gabarit pour du définitif. */
+.wip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 72px var(--gutter);
+  background: var(--ardoise-surface);
+  text-align: center;
+}
+
+.wip__badge {
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  background: #fef3c7;
+  color: #92400e;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.wip__title {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--bleu-principal);
+}
+
+.wip__text {
+  max-width: 620px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ardoise);
+}
+
+/* --------------------------------------------------------------------------
+   13c. Formulaire de contact
+   -------------------------------------------------------------------------- */
+
+.contact-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-8);
+  padding: var(--space-12) var(--gutter) 88px;
+}
+
+.contact-form {
+  display: flex;
+  flex: 1 1 0;
+  min-width: 0;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding: var(--space-10);
+  background: var(--neutre);
+  border: 1px solid var(--bordures);
+  border-radius: var(--radius-3xl);
+  box-shadow: var(--shadow-card);
+}
+
+.contact-form__note {
+  font-size: 13px;
+  color: var(--ardoise);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.field__row {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.field__row .field {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.field__label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--textes);
+}
+
+/* Le champ requis est signalé avant la saisie, pas après l'erreur. */
+.field__required {
+  color: var(--rouge-principal);
+}
+
+.field__input,
+.field__select,
+.field__textarea {
+  width: 100%;
+  min-height: 44px;
+  padding: var(--space-3) var(--space-4);
+  font-family: inherit;
+  font-size: 16px;
+  color: var(--textes);
+  background: var(--neutre);
+  border: 1px solid var(--bordures);
+  border-radius: var(--radius-lg);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.field__textarea {
+  min-height: 132px;
+  resize: vertical;
+}
+
+.field__input:focus,
+.field__select:focus,
+.field__textarea:focus {
+  outline: none;
+  border-color: var(--bleu-secondaire);
+  box-shadow: 0 0 0 3px var(--bleu-action-10);
+}
+
+.field__input::placeholder,
+.field__textarea::placeholder {
+  color: var(--disabled, #b1b1b1);
+}
+
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ardoise);
+}
+
+.consent input {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  accent-color: var(--bleu-principal);
+}
+
+.contact-form__submit {
+  width: 100%;
+  height: 48px;
+}
+
+.contact-aside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  width: 380px;
+  flex-shrink: 0;
+}
+
+.info-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-6);
+  border: 1px solid var(--bordures);
+  border-radius: var(--radius-2xl);
+  background: var(--neutre);
+}
+
+.info-card--tinted {
+  background: var(--lumiere);
+}
+
+.info-card__label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--rouge-principal);
+}
+
+.info-card__value {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--bleu-principal);
+}
+
+.info-card__text {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ardoise);
+}
+
+/* --------------------------------------------------------------------------
+   13d. Liste de liens (hub « Infos importantes »)
+   -------------------------------------------------------------------------- */
+
+.link-list {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 100%;
+  max-width: var(--content-max);
+  background: var(--neutre);
+  border: 1px solid var(--bordures);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+}
+
+.link-list__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-5) var(--space-6);
+  border-bottom: 1px solid var(--bordures);
+  transition: background-color 0.15s ease;
+}
+
+.link-list__item:last-child {
+  border-bottom: none;
+}
+
+.link-list__item:hover {
+  background: var(--lumiere);
+}
+
+.link-list__label {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--bleu-principal);
+}
+
+.link-list__desc {
+  margin-top: var(--space-1);
+  font-size: 14px;
+  color: var(--ardoise);
+}
+
+.link-list__arrow {
+  flex-shrink: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--bleu-principal);
+}
+
+/* --------------------------------------------------------------------------
+   13f. Page « Nos innovations »
+   -------------------------------------------------------------------------- */
+
+/* Deux halos bleus décoratifs, comme dans la maquette. Ils sont sous le contenu
+   et hors du flux, donc sans effet sur la lecture ni sur le clavier. */
+.innov {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.innov::before,
+.innov::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  border-radius: var(--radius-full);
+  background: radial-gradient(circle, rgba(0, 102, 220, 0.09), rgba(0, 102, 220, 0) 70%);
+  pointer-events: none;
+}
+
+.innov::before {
+  top: -472px;
+  left: -551px;
+  width: 1102px;
+  height: 1102px;
+}
+
+.innov::after {
+  top: 836px;
+  left: 1363px;
+  width: 542px;
+  height: 542px;
+}
+
+/* --- Héros : texte à gauche, vidéo à droite --- */
+/* 60px = les 139px du héros dans la maquette moins les 79px de l'en-tête. */
+.innov-hero {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  padding: 60px var(--gutter) 0;
+}
+
+.innov-hero__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  width: 648px;
+  flex-shrink: 0;
+  color: var(--bleu-principal);
+}
+
+.innov-hero__title {
+  max-width: 582px;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.innov-hero__lead {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+/* --- Vignette vidéo (partagée) ---
+   Un bouton, pas une image cliquable : il annonce ce qu'il fait.
+   La largeur passe par --thumb-w pour que chaque section fixe la sienne
+   sans style inline, qui empêcherait les media queries de la remettre à 100 %. */
+.video-thumb {
+  position: relative;
+  display: block;
+  width: var(--thumb-w, 536px);
+  flex-shrink: 0;
+  aspect-ratio: 16 / 9;
+  padding: 0;
+  border: 1px solid var(--bordures);
+  border-radius: var(--radius-xl);
+  background: none;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* Cible la vignette par sa classe, pas par `img` : sinon la règle l'emporte
+   sur .video-thumb__play et le bouton lecture est étiré à toute la vignette. */
+.video-thumb__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-thumb__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  transform: translate(-50%, -50%);
+  transition: transform 0.2s ease;
+}
+
+.video-thumb:hover .video-thumb__play {
+  transform: translate(-50%, -50%) scale(1.06);
+}
+
+/* --- Corps --- */
+.innov-main {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 49px var(--gutter) 40px;
+}
+
+.innov-section-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.innov-section-header__eyebrow {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.4px;
+  color: var(--rouge-principal);
+}
+
+.innov-section-header__title {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--bleu-principal);
+}
+
+/* --- Carte d'innovation --- */
+.innov-card {
+  display: flex;
+  align-items: center;
+  gap: 69px;
+  padding: var(--space-5);
+  background: var(--neutre);
+  border-left: 3px solid var(--green-valide);
+  border-radius: var(--radius-2xl);
+  box-shadow: 0 0 12.5px rgba(0, 0, 0, 0.05);
+}
+
+.innov-card__body {
+  display: flex;
+  flex: 1 1 0;
+  min-width: 0;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.innov-card__title {
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--bleu-principal);
+}
+
+.innov-card__text {
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--textes);
+}
+
+.innov-card__points {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.innov-card__points li {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+  color: var(--textes);
+}
+
+.innov-card__points li::before {
+  content: '';
+  flex-shrink: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: var(--radius-full);
+  background: var(--bleu-principal);
+}
+
+.innov-card__cta {
+  width: 330px;
+  max-width: 100%;
+  height: 40px;
+  margin-top: var(--space-1);
+}
+
+.innov-card__media {
+  width: 409px;
+  flex-shrink: 0;
+  align-self: stretch;
+  min-height: 223px;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+}
+
+.innov-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- « Innovation backed by experience » --- */
+.innov-proof {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  background: var(--neutre);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-card);
+}
+
+.innov-proof__title {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--bleu-principal);
+}
+
+.innov-proof__lead {
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--textes);
+}
+
+.innov-proof__list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4) 28px;
+}
+
+.innov-proof__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--textes);
+}
+
+.innov-proof__list img {
+  flex-shrink: 0;
+  width: 10px;
+  height: 10px;
+  margin-top: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   13g. Pages d'audience (courtiers, agences, associations, clients)
+   -------------------------------------------------------------------------- */
+
+/* --- Héros : accroche à gauche, visuel à droite --- */
+.aud-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-10);
+  padding: var(--space-10) var(--gutter);
+}
+
+/* Largeur pilotee par une variable : une largeur en style inline empecherait
+   les media queries de la ramener a 100 % sur mobile. */
+.aud-hero__text {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: var(--text-w, 662px);
+  flex-shrink: 0;
+}
+
+/* Les deux moitiés du titre sont des <span> dans un même <h1> : sans `block`
+   elles s'enchaînent sur la même ligne. */
+.aud-hero__kicker,
+.aud-hero__title {
+  display: block;
+}
+
+.aud-hero__kicker {
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--bleu-principal);
+}
+
+.aud-hero__title {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.21;
+  color: var(--rouge-principal);
+}
+
+.aud-hero__lead {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--bleu-principal);
+}
+
+.aud-hero__visual {
+  width: 502px;
+  flex-shrink: 0;
+  aspect-ratio: 502 / 283;
+  border: 1px solid var(--bordures);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.aud-hero__visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- Trois arguments --- */
+.aud-steps {
+  padding: 64px var(--gutter);
+  background: var(--lumiere);
+}
+
+.aud-steps__row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-12);
+  max-width: var(--content-max);
+  margin: 0 auto;
+}
+
+.aud-step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  background: var(--neutre);
+  border: 1px solid var(--bordures);
+  border-radius: 20px;
+  text-align: center;
+}
+
+.aud-step__title {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: normal;
+  color: var(--rouge-principal);
+}
+
+.aud-step__text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ardoise-texte);
+}
+
+/* --- Bloc innovations : réutilise .innov-card, avec un sous-titre --- */
+.aud-innov {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding: var(--space-10) var(--gutter);
+}
+
+.aud-innov__title {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--bleu-principal);
+}
+
+.innov-card__subtitle {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--bleu-principal);
+}
+
+/* --- « Features you can rely on » --- */
+.aud-features {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  padding: 64px var(--gutter);
+  background: var(--ardoise-fond);
+}
+
+.aud-features__text {
+  display: flex;
+  flex: 1 1 0;
+  min-width: 0;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.aud-features__title {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: normal;
+  color: var(--marine-profond);
+}
+
+.aud-features__lead {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--ardoise-texte);
+}
+
+.aud-features__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.aud-features__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ardoise-texte);
+}
+
+/* La puce est décorative : elle reste hors du texte lu par les lecteurs d'écran. */
+.aud-features__list li::before {
+  content: '•';
+  flex-shrink: 0;
+  color: var(--rouge-principal);
+  line-height: normal;
+}
+
+.aud-features__visual {
+  width: 448px;
+  flex-shrink: 0;
+}
+
+.aud-features__visual img {
+  width: 100%;
+  height: auto;
+}
+
+/* --------------------------------------------------------------------------
+   13h. Héros sur photo + sections communes aux pages Agences / Associations
+   -------------------------------------------------------------------------- */
+
+/* Photo et voile fusionnés sur un seul fond : moins coûteux qu'un
+   mix-blend-mode plein écran, et visuellement identique. */
+.aud-hero--photo {
+  position: relative;
+  align-items: center;
+  gap: var(--space-10);
+  padding: var(--space-10) var(--gutter);
+  isolation: isolate;
+  color: var(--neutre);
+}
+
+.aud-hero--photo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(33, 49, 99, 0.8), rgba(33, 49, 99, 0.8)),
+    var(--hero-photo, none);
+  background-blend-mode: multiply;
+  background-size: cover;
+  background-position: center;
+}
+
+.aud-hero--photo .aud-hero__text {
+  flex: 1 1 0;
+  min-width: 0;
+  width: auto;
+  gap: var(--space-6);
+}
+
+.aud-hero--photo .aud-hero__kicker,
+.aud-hero--photo .aud-hero__title {
+  color: var(--neutre);
+}
+
+.aud-hero--photo .aud-hero__lead {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--lumiere);
+}
+
+.aud-hero__cta {
+  width: 384px;
+  max-width: 100%;
+  height: 51px;
+  font-weight: 600;
+}
+
+.aud-hero__devices {
+  width: 526px;
+  flex-shrink: 0;
+}
+
+.aud-hero__devices img {
+  width: 100%;
+  height: auto;
+}
+
+/* --- Section « texte + visuel » réutilisable --- */
+.aud-split {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  padding: var(--space-10) var(--gutter);
+  background: var(--neutre);
+}
+
+.aud-split--pad-lg {
+  padding-block: 80px;
+}
+
+.aud-split__text {
+  display: flex;
+  flex: 1 1 0;
+  min-width: 0;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.aud-split__titles {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.aud-eyebrow {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--rouge-principal);
+}
+
+.aud-split__title {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--bleu-principal);
+}
+
+.aud-check-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.aud-check-list li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+  color: var(--textes);
+}
+
+.aud-check-list img {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+
+/* Sans cela le bouton hérite du `stretch` de la colonne et occupe toute
+   la largeur, alors que la maquette lui donne une largeur fixe. */
+.aud-split__text > .btn {
+  align-self: flex-start;
+  width: var(--cta-w, auto);
+  height: 42px;
+}
+
+.aud-split__visual {
+  width: var(--visual-w, auto);
+  flex-shrink: 0;
+}
+
+.aud-split__visual img {
+  width: 100%;
+  height: auto;
+}
+
+/* Liste à puces simple, en une colonne */
+.aud-plain-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--bleu-principal);
+}
+
+.aud-plain-list li::before {
+  content: '• ';
+}
+
+/* --- Grille de 12 fonctionnalités --- */
+.aud-grid-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-10) var(--gutter);
+  background: var(--ardoise-surface);
+}
+
+.aud-grid-section__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  align-items: center;
+  text-align: center;
+}
+
+.aud-grid-section__title {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: normal;
+  color: var(--bleu-principal);
+}
+
+.aud-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-8);
+  padding: var(--space-10) 60px;
+}
+
+.aud-grid__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-5);
+  background: var(--neutre);
+  border-radius: 14px;
+}
+
+.aud-grid__item img {
+  width: 24px;
+  height: 24px;
+}
+
+.aud-grid__title {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: normal;
+  color: var(--bleu-principal);
+}
+
+.aud-grid__text {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ardoise);
+}
+
+/* --------------------------------------------------------------------------
+   13i. Page Associations — grille d'avantages et bandeau sombre
+   -------------------------------------------------------------------------- */
+
+.aud-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: var(--space-10) var(--gutter);
+}
+
+.aud-benefits__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.benefit-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  background: var(--neutre);
+  border: 1px solid var(--bordures);
+  border-radius: var(--radius-2xl);
+}
+
+.benefit-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  background: var(--lumiere);
+  border-radius: var(--radius-lg);
+}
+
+.benefit-card__icon img {
+  width: 24px;
+  height: 24px;
+}
+
+.benefit-card__text {
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--bleu-principal);
+}
+
+/* --- Bandeau « Reports and statistics » sur fond marine --- */
+.aud-dark {
+  padding: 44px var(--gutter);
+  background: var(--bleu-principal);
+  color: var(--neutre);
+}
+
+.aud-dark__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  max-width: var(--content-max);
+  margin: 0 auto;
+}
+
+.aud-dark__titles {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.aud-dark__title {
+  font-size: 52px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.aud-dark__subtitle {
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.aud-dark__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.aud-dark__cta {
+  width: 541px;
+  max-width: 100%;
+  height: 42px;
+}
+
+/* --- Bloc « Simplified communication » --- */
+.aud-message {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  padding: 60px var(--gutter);
+  background: var(--neutre);
+}
+
+.aud-message__text {
+  display: flex;
+  flex: 1 1 0;
+  min-width: 0;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.aud-message__title {
+  font-size: 44px;
+  font-weight: 700;
+  line-height: normal;
+  color: var(--bleu-principal);
+}
+
+.aud-message__subtitle {
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--bleu-principal);
+}
+
+.aud-message__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--ardoise-fonce);
+}
+
+.aud-message__visual {
+  width: 431px;
+  flex-shrink: 0;
+}
+
+.aud-message__visual img {
+  width: 100%;
+  height: auto;
+}
+
+/* --------------------------------------------------------------------------
+   13j. Page Clients (acheteurs et vendeurs)
+   -------------------------------------------------------------------------- */
+
+.cust-hero {
+  display: flex;
+  align-items: center;
+  gap: var(--space-10);
+  padding: var(--space-10) var(--gutter);
+}
+
+.cust-hero__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  width: 580px;
+  flex-shrink: 0;
+}
+
+.cust-hero__kicker,
+.cust-hero__title {
+  display: block;
+  line-height: 1.14;
+  font-weight: 700;
+}
+
+.cust-hero__kicker {
+  font-size: 32px;
+  color: var(--bleu-principal);
+}
+
+.cust-hero__title {
+  font-size: 36px;
+  color: var(--rouge-principal);
+}
+
+.cust-hero__lead {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--textes);
+}
+
+.cust-hero__visual {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  height: 400px;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.cust-hero__visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Le phylactère est déjà dessiné dans la photo, vide — le texte vient se
+   poser par-dessus, en pourcentages pour suivre la largeur fluide du visuel. */
+.cust-hero__bubble {
+  position: absolute;
+  left: 42.1%;
+  top: 7.75%;
+  width: 46.9%;
+  font-size: 16px;
+  line-height: normal;
+  color: var(--textes);
+}
+
+/* --- Rangées éditoriales, image et texte alternés --- */
+.cust-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-10);
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: var(--space-5) 0;
+}
+
+.cust-row__media,
+.cust-row__text {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.cust-row__media {
+  height: 300px;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.cust-row__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: bottom;
+}
+
+.cust-row__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.cust-row__eyebrow {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--rouge-principal);
+}
+
+.cust-row__title {
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--bleu-principal);
+}
+
+.cust-row__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--textes);
+}
+
+.cust-wrap {
+  padding: 0 var(--gutter);
+}
+
+/* --------------------------------------------------------------------------
+   13k. Page À propos
+   -------------------------------------------------------------------------- */
+
+.about-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-10) var(--gutter) var(--space-5);
+}
+
+.about-hero__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-6);
+  width: 100%;
+  max-width: var(--content-max);
+}
+
+.about-hero__title {
+  font-size: 32px;
+  line-height: normal;
+}
+
+.about-hero__title span {
+  display: block;
+}
+
+.about-hero__title .about-hero__titleA {
+  font-weight: 400;
+  color: var(--bleu-principal);
+}
+
+.about-hero__title .about-hero__titleB {
+  font-weight: 700;
+  color: var(--rouge-principal);
+}
+
+.about-hero__visual {
+  width: 100%;
+  height: 430px;
+  border-radius: var(--radius-3xl);
+  overflow: hidden;
+}
+
+.about-hero__visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-hero__intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  font-size: 16px;
+  line-height: 1.3;
+  color: var(--textes);
+}
+
+/* Même stratégie d'alignement que .about-hero — un rembourrage fixe sur la
+   section, un plafond de largeur sur son contenu — pour que le texte et le
+   bouton retombent exactement sur le même bord gauche que l'intro au-dessus. */
+.about-cta {
+  display: flex;
+  justify-content: center;
+  padding: 0 var(--gutter) 30px;
+}
+
+.about-cta__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+  width: 100%;
+  max-width: var(--content-max);
+}
+
+.about-cta__title {
+  text-align: left;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: normal;
+  color: var(--bleu-principal);
+}
+
+.about-cta__cta {
+  width: 388px;
+  max-width: 100%;
+  height: 42px;
+}
+
+.about-mission {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-10) var(--gutter);
+  text-align: center;
+  color: var(--neutre);
+  background: var(--bleu-principal);
+}
+
+.about-mission__title {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.about-mission__text {
+  font-size: 16px;
+  line-height: normal;
+}
+
+/* Les deux halos décoratifs débordent volontairement du cadre : la section
+   les rogne pour ne garder que leur lueur, comme dans la maquette. */
+.about-facts {
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-5) var(--gutter);
+  background: var(--neutre);
+}
+
+.about-facts__blur {
+  position: absolute;
+  pointer-events: none;
+}
+
+.about-facts__blur--blue {
+  top: 100px;
+  left: -80px;
+  width: 400px;
+  height: 400px;
+}
+
+.about-facts__blur--red {
+  top: -50px;
+  right: -70px;
+  width: 450px;
+  height: 450px;
+}
+
+.about-facts__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  width: 100%;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: var(--space-10);
+  background: var(--bleu-principal);
+  border-radius: var(--radius-3xl);
+  box-shadow: var(--shadow-card);
+}
+
+.about-facts__title {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: normal;
+  color: var(--neutre);
+}
+
+.about-facts__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+}
+
+.about-facts__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.about-facts__icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  padding-top: 2px;
+}
+
+.about-facts__item p {
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--neutre);
+}
+
+/* --------------------------------------------------------------------------
+   13e. Pages légales — sommaire collant + document
+   -------------------------------------------------------------------------- */
+
+.legal {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-10);
+  padding: 56px var(--gutter) 72px;
+}
+
+/* Un document de 20 000 caractères sans sommaire, c'est de la mémorisation
+   pure : le sommaire suit le défilement. */
+.legal__toc {
+  position: sticky;
+  top: calc(var(--header-height) + var(--space-5));
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: 280px;
+  flex-shrink: 0;
+  padding: var(--space-6) var(--space-5);
+  background: var(--lumiere);
+  border: 1px solid var(--bordures);
+  border-radius: var(--radius-2xl);
+}
+
+.legal__toc-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--rouge-principal);
+}
+
+.legal__toc ol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: toc;
+}
+
+.legal__toc li {
+  counter-increment: toc;
+}
+
+.legal__toc a {
+  display: flex;
+  gap: var(--space-2);
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--textes-secondaire);
+}
+
+.legal__toc a::before {
+  content: counter(toc) '.';
+  flex-shrink: 0;
+  font-weight: 600;
+}
+
+.legal__toc a:hover {
+  color: var(--bleu-principal);
+}
+
+.legal__doc {
+  display: flex;
+  flex: 1 1 0;
+  min-width: 0;
+  flex-direction: column;
+  gap: var(--space-8);
+  counter-reset: sec;
+}
+
+.legal__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  scroll-margin-top: calc(var(--header-height) + var(--space-5));
+  counter-increment: sec;
+}
+
+.legal__section h2 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.35;
+  text-transform: uppercase;
+  color: var(--bleu-principal);
+}
+
+.legal__section h2::before {
+  content: counter(sec) '. ';
+}
+
+.legal__section p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--textes-secondaire);
+}
+
+/* Barres grises volontaires : la copie légale doit être reprise mot pour mot,
+   pas réécrite. Elles disparaissent quand le vrai texte arrive. */
+.legal__placeholder {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.legal__placeholder span {
+  height: 10px;
+  border-radius: var(--radius-sm);
+  background: var(--bordures);
+}
+
+.legal__placeholder span:last-child {
+  width: 62%;
+}
+
+/* --------------------------------------------------------------------------
+   14. Pied de page
+   -------------------------------------------------------------------------- */
+
+.site-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  min-height: 83px;
+  padding: var(--space-5) var(--gutter);
+  background: var(--lumiere);
+}
+
+.site-footer__brand {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.site-footer__brand img {
+  width: 154px;
+  height: 35px;
+}
+
+.site-footer__copyright {
+  font-size: 12px;
+  line-height: 1;
+  color: var(--bleu-principal);
+}
+
+.site-footer__links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  font-size: 12px;
+  line-height: 1;
+  color: var(--bleu-principal);
+}
+
+.site-footer__links a {
+  padding: var(--space-1) 0;
+}
+
+.site-footer__links a:hover {
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   15. Adaptatif
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1180px) {
+  /* Deux cartes par rangée : la hauteur fixe cède la place à la hauteur du contenu. */
+  .hero__cards {
+    flex-wrap: wrap;
+    height: auto;
+  }
+
+  .category-card {
+    flex: 1 1 calc(50% - var(--space-6) / 2);
+  }
+
+  .app-section {
+    gap: var(--space-12);
+  }
+
+  /* La vignette cède la place au texte avant de passer dessous. */
+  .app-section__visual {
+    --thumb-w: 460px;
+  }
+
+  .stats-banner__title {
+    font-size: 38px;
+  }
+
+  .band__title {
+    font-size: 48px;
+  }
+
+  .section-header__title {
+    font-size: 38px;
+  }
+
+  .statement__title {
+    font-size: 42px;
+  }
+
+  /* La vidéo passe sous le texte, puis les cartes s'empilent. */
+  .innov-hero {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-8);
+    padding-top: var(--space-12);
+  }
+
+  .innov-hero__text,
+  .innov-hero__video {
+    width: 100%;
+  }
+
+  .innov-hero__title {
+    max-width: none;
+  }
+
+  .innov-card {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-6);
+  }
+
+  .innov-card__media {
+    width: 100%;
+    align-self: auto;
+    aspect-ratio: 409 / 223;
+    min-height: 0;
+  }
+
+  .innov::after {
+    display: none;
+  }
+
+  /* Pages d'audience : le visuel passe sous le texte. */
+  .aud-hero,
+  .aud-features {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-8);
+  }
+
+  .aud-hero__text,
+  .aud-hero__visual,
+  .aud-features__visual {
+    width: 100%;
+    --text-w: 100%;
+    --visual-w: 100%;
+  }
+
+  .aud-split__visual {
+    --visual-w: 100%;
+    width: 100%;
+    max-width: 545px;
+    align-self: center;
+  }
+
+  .aud-steps__row {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .aud-split {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-8);
+  }
+
+  .aud-hero__devices,
+  .aud-split__visual {
+    width: 100%;
+    max-width: 526px;
+    align-self: center;
+  }
+
+  .aud-grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding-inline: 0;
+  }
+
+  .aud-benefits__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .aud-message {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-8);
+  }
+
+  .aud-message__visual {
+    width: 100%;
+    max-width: 431px;
+    align-self: center;
+  }
+
+  /* Le visuel repasse toujours au-dessus du texte, quel que soit l'ordre. */
+  .cust-hero,
+  .cust-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-6);
+  }
+
+  .cust-hero__text {
+    width: 100%;
+  }
+
+  /* flex-basis:0 (de flex:1 1 0) l'emporterait sur cette hauteur explicite :
+     flex:none la neutralise pour que les 280px/240px s'appliquent vraiment. */
+  .cust-hero__visual {
+    flex: none;
+    height: 280px;
+  }
+
+  /* Le phylactère garde ses proportions, mais une boîte plus courte laisse
+     moins de place en hauteur : le texte passe sur moins de lignes. */
+  .cust-hero__bubble {
+    width: 58%;
+    font-size: 13px;
+  }
+
+  .cust-row__media {
+    flex: none;
+    order: -1;
+    height: 240px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .nav-toggle {
+    display: flex;
+    position: relative;
+  }
+
+  .site-header__right {
+    gap: var(--space-3);
+  }
+
+  /* La navigation devient un panneau déroulant sous l'en-tête */
+  .main-nav {
+    position: absolute;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: var(--space-2) var(--gutter) var(--space-4);
+    background: var(--neutre);
+    border-bottom: 1px solid var(--bordures);
+    box-shadow: var(--shadow-base);
+    display: none;
+  }
+
+  .main-nav[data-open='true'] {
+    display: flex;
+  }
+
+  .main-nav__link {
+    justify-content: space-between;
+    border-bottom: 1px solid var(--bordures);
+  }
+
+  /* Sur mobile le sous-menu se déplie sous son lien plutôt que de recouvrir la page. */
+  .site-submenu {
+    position: static;
+    padding: 0 var(--gutter) var(--space-4);
+    border-bottom: none;
+    box-shadow: none;
+  }
+
+  .site-submenu__inner {
+    flex-direction: column;
+    max-width: none;
+  }
+
+  .site-submenu__link {
+    justify-content: flex-start;
+    height: 44px;
+    padding: 0 0 0 var(--space-4);
+  }
+
+  .site-submenu__link::after {
+    left: var(--space-4);
+  }
+
+  .hero__title {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 900px) {
+  .about-mission__title {
+    font-size: 34px;
+  }
+
+  .about-facts__list {
+    grid-template-columns: 1fr;
+  }
+
+  .about-facts__card {
+    padding: var(--space-6);
+  }
+
+  /* Le visuel de l'application passe sous le texte */
+  .app-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-10);
+    padding-block: var(--space-12);
+  }
+
+  .app-section__visual {
+    --thumb-w: 100%;
+    align-self: stretch;
+  }
+
+  .stats-banner__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  /* Le bandeau abandonne la superposition et empile titre, visuel puis CTA. */
+  .band {
+    min-height: 0;
+    justify-content: flex-start;
+    gap: var(--space-8);
+    padding-block: var(--space-12);
+  }
+
+  .band__title,
+  .band__screens {
+    position: static;
+    transform: none;
+  }
+
+  .band__title {
+    width: 100%;
+    max-width: 100%;
+    font-size: 40px;
+  }
+
+  .band__screens {
+    width: 100%;
+    max-width: 850px;
+    height: auto;
+  }
+
+  .features {
+    gap: var(--space-10);
+    padding-block: var(--space-12);
+  }
+
+  .help {
+    padding-inline: var(--gutter);
+  }
+
+  .help__panel {
+    padding-inline: var(--space-8);
+  }
+
+  .site-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Le formulaire passe au-dessus, les coordonnées en dessous. */
+  .contact-layout {
+    flex-direction: column;
+  }
+
+  .contact-aside {
+    width: 100%;
+  }
+}
+
+@media (max-width: 720px) {
+  .about-hero__title {
+    font-size: 26px;
+  }
+
+  .about-hero__visual {
+    height: 220px;
+  }
+
+  .about-cta__cta {
+    width: 100%;
+  }
+
+  .about-mission__title {
+    font-size: 26px;
+  }
+
+  /* Une carte par rangée : deux à côté deviendraient trop étroites pour le texte. */
+  .hero__cards {
+    flex-direction: column;
+  }
+
+  .category-card {
+    flex: 1 1 auto;
+  }
+
+  .hero__lead {
+    font-size: 18px;
+  }
+
+  .hero__note {
+    font-size: 22px;
+  }
+
+  .app-section__title {
+    font-size: 30px;
+  }
+
+  .band__title {
+    font-size: 30px;
+  }
+
+  .band__ctas {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .section-header__title {
+    font-size: 28px;
+  }
+
+  .features__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .help__cta,
+  .innov-card__cta {
+    width: 100%;
+  }
+
+  .innov-hero__title {
+    font-size: 26px;
+  }
+
+  .innov-hero__lead {
+    font-size: 16px;
+  }
+
+  .video-thumb__play {
+    width: 64px;
+    height: 64px;
+  }
+
+  .innov-section-header__eyebrow {
+    font-size: 16px;
+  }
+
+  .innov-section-header__title,
+  .innov-card__title,
+  .innov-proof__title {
+    font-size: 22px;
+  }
+
+  /* Une seule colonne : deux colonnes de puces à cette largeur sont illisibles. */
+  .innov-proof__list {
+    grid-template-columns: 1fr;
+  }
+
+  .aud-hero__kicker {
+    font-size: 22px;
+  }
+
+  .aud-hero__title {
+    font-size: 28px;
+  }
+
+  .aud-hero__lead {
+    font-size: 16px;
+  }
+
+  .aud-innov__title,
+  .aud-features__title {
+    font-size: 24px;
+  }
+
+  .innov-card__subtitle {
+    font-size: 16px;
+  }
+
+  .aud-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .aud-split__title,
+  .aud-grid-section__title {
+    font-size: 24px;
+  }
+
+  .aud-hero__cta,
+  .aud-dark__cta {
+    width: 100%;
+  }
+
+  .aud-benefits__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .aud-dark__title {
+    font-size: 30px;
+  }
+
+  .aud-dark__subtitle,
+  .aud-message__title {
+    font-size: 24px;
+  }
+
+  .aud-message__subtitle {
+    font-size: 20px;
+  }
+
+  .cust-hero__kicker,
+  .cust-row__eyebrow,
+  .cust-row__title {
+    font-size: 24px;
+  }
+
+  .cust-hero__title {
+    font-size: 26px;
+  }
+
+  .client-logos {
+    padding-block: var(--space-10);
+  }
+
+  /* Série resserrée sur petit écran : la boucle reste lisible. */
+  .client-logos__set {
+    gap: var(--space-10);
+    padding-right: var(--space-10);
+  }
+
+  .testimonial__quote {
+    font-size: 19px;
+  }
+
+  .statement__title {
+    font-size: 30px;
+  }
+
+  .help__title {
+    font-size: 22px;
+  }
+
+  .help__lead {
+    font-size: 17px;
+    line-height: 24px;
+  }
+
+  .page-hero__title {
+    font-size: 30px;
+  }
+
+  .page-hero__lead {
+    font-size: 16px;
+  }
+
+  .contact-form {
+    padding: var(--space-6);
+  }
+
+  .field__row {
+    flex-direction: column;
+  }
+
+  .stats-banner {
+    padding-block: var(--space-12);
+  }
+
+  .stats-banner__title {
+    font-size: 28px;
+  }
+
+  .stat__value {
+    font-size: 38px;
+  }
+
+  .store-badges img {
+    height: 52px;
+  }
+
+  .hero {
+    padding-top: var(--space-12);
+    padding-bottom: var(--space-16);
+    gap: var(--space-8);
+  }
+
+  .hero__title {
+    font-size: 32px;
+  }
+
+  .site-header__logo img {
+    width: 148px;
+    height: auto;
+  }
+
+  /* Le bandeau « Proudly Canadian » cède la place au bouton FR/Login/menu. */
+  .site-header__divider,
+  .site-header__slogan {
+    display: none;
+  }
+
+  .btn {
+    padding: var(--space-3) var(--space-5);
+  }
+}
+
+/* Respecte la préférence système de réduction du mouvement */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Une boucle infinie ramenée à 0,01 ms clignoterait : on l'arrête net. */
+  .client-logos__track {
+    animation: none !important;
+  }
+}

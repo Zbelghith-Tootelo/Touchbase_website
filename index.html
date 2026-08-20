@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Touchbase — A solution for every player in real estate</title>
+    <meta
+      name="description"
+      content="Touchbase gives Canadian real estate professionals tailor-made tools for showings, communication and workflow automation."
+    />
+    <link rel="icon" href="assets/logo-touchbase.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+
+  <body data-page="home">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="page">
+      <div data-layout="header"></div>
+
+      <main id="main">
+        <!-- ================= Héro — chaque acteur de l'immobilier ================= -->
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="hero__header">
+            <h1 class="hero__title" id="hero-title" data-i18n="hero.title">
+              More time, more connections, more opportunities.
+            </h1>
+            <div class="hero__subtitle">
+              <p class="hero__lead" data-i18n="hero.lead">
+                Proudly Canadian, Touchbase brings together the technology and tools that help real estate
+                professionals, brokerages and boards work smarter, collaborate better and build stronger client
+                connections.
+              </p>
+              <p class="hero__note" data-i18n="hero.note">Select your profile to explore Touchbase.</p>
+            </div>
+          </div>
+
+          <!-- Illustration, corps et bouton sont les trois blocs que chaque carte centre verticalement. -->
+          <div class="hero__cards">
+            <article class="category-card">
+              <span class="category-card__media">
+                <img
+                  class="category-card__illustration"
+                  src="assets/img/card-agent.svg"
+                  width="113"
+                  height="90"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </span>
+              <div class="category-card__body">
+                <h2 class="category-card__title" data-i18n="hero.agent.title">Brokers</h2>
+                <p class="category-card__text" data-i18n="hero.agent.text">
+                  Streamline your work and build stronger client relationships.
+                </p>
+              </div>
+              <a
+                class="btn-circle"
+                href="for-brokers.html"
+                data-i18n-aria-label="hero.cardCta"
+                aria-label="Learn more"
+              >
+                <img src="assets/icons/arrow-right.svg" alt="" aria-hidden="true" />
+              </a>
+            </article>
+
+            <article class="category-card">
+              <span class="category-card__media">
+                <img
+                  class="category-card__illustration"
+                  src="assets/img/card-brokerage.svg"
+                  width="92"
+                  height="98"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </span>
+              <div class="category-card__body">
+                <h2 class="category-card__title" data-i18n="hero.brokerage.title">Brokerages</h2>
+                <p class="category-card__text" data-i18n="hero.brokerage.text">
+                  Simplify operations and support your teams with a single platform.
+                </p>
+              </div>
+              <a
+                class="btn-circle"
+                href="for-brokerages.html"
+                data-i18n-aria-label="hero.cardCta"
+                aria-label="Learn more"
+              >
+                <img src="assets/icons/arrow-right.svg" alt="" aria-hidden="true" />
+              </a>
+            </article>
+
+            <article class="category-card">
+              <span class="category-card__media">
+                <img
+                  class="category-card__illustration"
+                  src="assets/img/card-associations.svg"
+                  width="82"
+                  height="90"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </span>
+              <div class="category-card__body">
+                <h2 class="category-card__title" data-i18n="hero.associations.title">Boards</h2>
+                <p class="category-card__text" data-i18n="hero.associations.text">
+                  Connect your members with the technology they need to succeed.
+                </p>
+              </div>
+              <a
+                class="btn-circle"
+                href="for-associations.html"
+                data-i18n-aria-label="hero.cardCta"
+                aria-label="Learn more"
+              >
+                <img src="assets/icons/arrow-right.svg" alt="" aria-hidden="true" />
+              </a>
+            </article>
+
+            <article class="category-card">
+              <span class="category-card__media">
+                <img
+                  class="category-card__illustration"
+                  src="assets/img/card-customers.svg"
+                  width="76"
+                  height="90"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </span>
+              <div class="category-card__body">
+                <h2 class="category-card__title" data-i18n="hero.customers.title">Buyers and sellers</h2>
+                <p class="category-card__text" data-i18n="hero.customers.text">
+                  See how AI boosts listing visibility and reaches more buyers.
+                </p>
+              </div>
+              <a
+                class="btn-circle"
+                href="for-customers.html"
+                data-i18n-aria-label="hero.cardCta"
+                aria-label="Learn more"
+              >
+                <img src="assets/icons/arrow-right.svg" alt="" aria-hidden="true" />
+              </a>
+            </article>
+          </div>
+        </section>
+
+        <!-- ================= Application mobile ================= -->
+        <section class="app-section" aria-labelledby="app-title">
+          <div class="app-section__text">
+            <div class="app-section__titles">
+              <h2 class="app-section__title" id="app-title" data-i18n="app.title">
+                Work from anywhere with the TouchBase app
+              </h2>
+              <p class="app-section__lead" data-i18n="app.lead">
+                Whether you're at the office, in the car, or between showings, TouchBase is always within reach. Manage
+                messages, book showings, and update clients instantly.
+              </p>
+            </div>
+
+            <ul class="feature-list">
+              <li class="feature-list__item">
+                <img class="feature-list__icon" src="assets/icons/check.svg" alt="" aria-hidden="true" />
+                <span data-i18n="app.feature1">Real-time notification push for showing requests</span>
+              </li>
+              <li class="feature-list__item">
+                <img class="feature-list__icon" src="assets/icons/check.svg" alt="" aria-hidden="true" />
+                <span data-i18n="app.feature2">Direct broker-to-broker feedback tools</span>
+              </li>
+              <li class="feature-list__item">
+                <img class="feature-list__icon" src="assets/icons/check.svg" alt="" aria-hidden="true" />
+                <span data-i18n="app.feature3">Offline access to listing worksheets</span>
+              </li>
+            </ul>
+
+            <div class="store-badges">
+              <a href="#app-store" data-i18n-aria-label="app.appStore" aria-label="Download on the App Store">
+                <img src="assets/img/badge-appstore.svg" alt="" aria-hidden="true" />
+              </a>
+              <a
+                class="store-badges__googleplay"
+                href="#google-play"
+                data-i18n-aria-label="app.googlePlay"
+                aria-label="Get it on Google Play"
+              >
+                <img src="assets/img/badge-googleplay.svg" alt="" aria-hidden="true" />
+              </a>
+            </div>
+          </div>
+
+          <button
+            class="video-thumb app-section__visual"
+            type="button"
+            data-i18n-aria-label="app.videoCta"
+            aria-label="Play the video"
+          >
+            <img class="video-thumb__img" src="assets/img/innov/hero-video.jpg" alt="" aria-hidden="true" />
+            <img class="video-thumb__play" src="assets/icons/play.svg" alt="" aria-hidden="true" />
+          </button>
+        </section>
+
+        <!-- ================= Chiffres clés ================= -->
+        <section class="stats-banner" aria-labelledby="stats-title">
+          <h2 class="stats-banner__title" id="stats-title" data-i18n="stats.title">
+            Powering Canadian real estate since 2008
+          </h2>
+
+          <div class="stats-banner__grid">
+            <div class="stat">
+              <p class="stat__value">3,000,000+</p>
+              <p class="stat__label" data-i18n="stats.transactions">Transactions / Month</p>
+            </div>
+            <div class="stat">
+              <p class="stat__value">40+</p>
+              <p class="stat__label" data-i18n="stats.boards">Real Estate Boards</p>
+            </div>
+            <div class="stat">
+              <p class="stat__value">3,200+</p>
+              <p class="stat__label" data-i18n="stats.offices">Real Estate Offices</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= Bandeau « Touchbase s'occupe du reste » ================= -->
+        <section class="band" aria-labelledby="band-title">
+          <h2 class="band__title" id="band-title">
+            <strong data-i18n="band.titleLine1">You focus on your clients,</strong>
+            <span data-i18n="band.titleLine2">TouchBase handles the rest</span>
+          </h2>
+
+          <img
+            class="band__screens"
+            src="assets/img/band-screens.png"
+            data-i18n-alt="band.imageAlt"
+            alt="The Touchbase platform on desktop and mobile"
+          />
+
+          <div class="band__content">
+            <p class="band__lead" data-i18n="band.lead">
+              For almost 20 years, Touchbase has helped real estate professionals across Canada simplify showings,
+              streamline communication and stay one step ahead of the competition through one powerful platform.
+            </p>
+
+            <div class="band__ctas">
+              <a class="btn btn--photo-primaire" href="#trial" data-i18n="band.ctaPrimary"
+                >Free trial for brokerages</a
+              >
+              <a class="btn btn--photo-secondaire" href="#explore" data-i18n="band.ctaSecondary"
+                >Explore Touchbase innovations</a
+              >
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= Grille de fonctionnalités ================= -->
+        <section class="features" aria-labelledby="features-title">
+          <div class="section-header">
+            <h2 class="section-header__title" id="features-title" data-i18n="features.title">
+              Technology that helps you do more
+            </h2>
+            <p class="section-header__lead" data-i18n="features.lead">
+              From AI-powered tools to smarter workflows, Touchbase helps real estate professionals across Canada
+              simplify their day-to-day, reduce administrative tasks and spend more time on what matters: better
+              serving clients and closing more deals.
+            </p>
+          </div>
+
+          <div class="features__grid">
+            <article class="feature-card">
+              <div class="feature-card__head">
+                <span class="feature-card__icon">
+                  <img src="assets/icons/message-user.svg" alt="" aria-hidden="true" />
+                </span>
+                <h3 class="feature-card__title" data-i18n="features.showing.title">Showing management</h3>
+              </div>
+              <p class="feature-card__text" data-i18n="features.showing.text">
+                Automated showing requests, approvals, and dynamic tour mapping in real-time.
+              </p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-card__head">
+                <span class="feature-card__icon">
+                  <img src="assets/icons/mail-account.svg" alt="" aria-hidden="true" />
+                </span>
+                <h3 class="feature-card__title" data-i18n="features.mls.title">MLS integration</h3>
+              </div>
+              <p class="feature-card__text" data-i18n="features.mls.text">
+                Real-time synchronisation with major listing databases across Canada.
+              </p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-card__head">
+                <span class="feature-card__icon">
+                  <img src="assets/icons/home.svg" alt="" aria-hidden="true" />
+                </span>
+                <h3 class="feature-card__title" data-i18n="features.ai.title">AI-powered solutions</h3>
+              </div>
+              <p class="feature-card__text" data-i18n="features.ai.text">
+                Smart tools and innovations to automate tasks, work faster from anywhere and improve interactions.
+              </p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-card__head">
+                <span class="feature-card__icon">
+                  <img src="assets/icons/calendar.svg" alt="" aria-hidden="true" />
+                </span>
+                <h3 class="feature-card__title" data-i18n="features.team.title">Dedicated team</h3>
+              </div>
+              <p class="feature-card__text" data-i18n="features.team.text">
+                In-house support, software and AI development teams to assist you and build new features.
+              </p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-card__head">
+                <span class="feature-card__icon">
+                  <img src="assets/icons/user-multiple.svg" alt="" aria-hidden="true" />
+                </span>
+                <h3 class="feature-card__title" data-i18n="features.workflow.title">Workflow automation</h3>
+              </div>
+              <p class="feature-card__text" data-i18n="features.workflow.text">
+                Calendar integration and automated showing workflows, saving time and effort.
+              </p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-card__head">
+                <span class="feature-card__icon">
+                  <img src="assets/icons/checkmark-square.svg" alt="" aria-hidden="true" />
+                </span>
+                <h3 class="feature-card__title" data-i18n="features.admin.title">Admin interface</h3>
+              </div>
+              <p class="feature-card__text" data-i18n="features.admin.text">
+                Dedicated interface designed to allow assistants to easily manage their teams.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <!-- ================= Logos clients ================= -->
+        <section class="client-logos" aria-labelledby="client-logos-title">
+          <h2 class="client-logos__title" id="client-logos-title" data-i18n="clients.title">
+            The choice of Realtors® across Canada since 2001
+          </h2>
+
+          <!-- Défilement continu : la piste contient deux fois la même série,
+               la seconde masquée aux lecteurs d'écran pour ne pas lire deux fois. -->
+          <div class="client-logos__marquee">
+            <div class="client-logos__track">
+              <div class="client-logos__set">
+                <img src="assets/img/logo-client-1.png" width="100" height="34" alt="Century 21" />
+                <span class="kw-logo" role="img" aria-label="Keller Williams">
+                  <span class="kw-logo__mark" aria-hidden="true">kw</span>
+                  <span class="kw-logo__text" aria-hidden="true">
+                    <span>Keller</span>
+                    <span>Williams</span>
+                  </span>
+                </span>
+                <img src="assets/img/logo-client-3.png" width="93" height="32" alt="Coldwell Banker" />
+                <img src="assets/img/logo-client-4.png" width="110" height="35" alt="Sotheby's International Realty" />
+                <img src="assets/img/logo-client-5.png" width="60" height="58" alt="Sutton" />
+                <img src="assets/img/logo-client-6.png" width="98" height="27" alt="RE/MAX" />
+              </div>
+
+              <div class="client-logos__set" aria-hidden="true">
+                <img src="assets/img/logo-client-1.png" width="100" height="34" alt="" />
+                <span class="kw-logo">
+                  <span class="kw-logo__mark">kw</span>
+                  <span class="kw-logo__text">
+                    <span>Keller</span>
+                    <span>Williams</span>
+                  </span>
+                </span>
+                <img src="assets/img/logo-client-3.png" width="93" height="32" alt="" />
+                <img src="assets/img/logo-client-4.png" width="110" height="35" alt="" />
+                <img src="assets/img/logo-client-5.png" width="60" height="58" alt="" />
+                <img src="assets/img/logo-client-6.png" width="98" height="27" alt="" />
+              </div>
+
+              <div class="client-logos__set" aria-hidden="true">
+                <img src="assets/img/logo-client-1.png" width="100" height="34" alt="" />
+                <span class="kw-logo">
+                  <span class="kw-logo__mark">kw</span>
+                  <span class="kw-logo__text">
+                    <span>Keller</span>
+                    <span>Williams</span>
+                  </span>
+                </span>
+                <img src="assets/img/logo-client-3.png" width="93" height="32" alt="" />
+                <img src="assets/img/logo-client-4.png" width="110" height="35" alt="" />
+                <img src="assets/img/logo-client-5.png" width="60" height="58" alt="" />
+                <img src="assets/img/logo-client-6.png" width="98" height="27" alt="" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= Témoignage ================= -->
+        <section class="testimonial" aria-label="Client testimonial">
+          <figure class="testimonial__content">
+            <img class="testimonial__icon" src="assets/icons/quote.svg" alt="" aria-hidden="true" />
+            <blockquote class="testimonial__quote" data-i18n="testimonial.quote">
+              "When I hear of other Real Estate Boards &amp; Associations that don't have Touchbase, I just shudder to
+              think what life would be like without it! The ease with which we organize showing details is
+              spectacular."
+            </blockquote>
+            <figcaption class="testimonial__author">
+              <span class="testimonial__name">Richard Thyssen</span>
+              <span class="testimonial__role" data-i18n="testimonial.role">Broker of Record, Century 21 Premier</span>
+            </figcaption>
+          </figure>
+        </section>
+
+        <!-- ================= Manifeste ================= -->
+        <section class="statement" aria-labelledby="statement-title">
+          <h2 class="statement__title" id="statement-title">
+            <span data-i18n="statement.titleA">Innovation isn't a feature.</span>
+            <span data-i18n="statement.titleB">It's our mindset.</span>
+          </h2>
+          <p class="statement__lead" data-i18n="statement.lead">
+            Real estate moves fast, and so do we. Every tool, every workflow automation, and every backend update is
+            designed to help Realtors® work smarter.
+          </p>
+        </section>
+
+        <!-- ================= Encart d'aide ================= -->
+        <section class="help" id="info" aria-labelledby="help-title">
+          <div class="help__panel">
+            <div class="help__titles">
+              <h2 class="help__title" id="help-title" data-i18n="help.title">Any question or need help?</h2>
+              <p class="help__lead" data-i18n="help.lead">To log in to Touchbase or get support:</p>
+            </div>
+            <a class="btn btn--navy help__cta" href="#contact" data-i18n="help.cta">Contact us</a>
+          </div>
+        </section>
+      </main>
+
+      <div data-layout="footer"></div>
+    </div>
+
+    <script src="js/layout.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

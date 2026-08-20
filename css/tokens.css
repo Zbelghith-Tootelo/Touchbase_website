@@ -1,0 +1,120 @@
+/* ==========================================================================
+   Touchbase — Design tokens
+   Source: Figma « Immocontact » + Immocontact/Touchbase brand guidelines
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lexend:wght@400&display=swap');
+
+:root {
+  /* --- Couleurs primaires --- */
+  --bleu-principal: #213163;
+  --bleu-secondaire: #0066dc;
+  --rouge-principal: #c8102e;
+  --textes: #111111;
+
+  /* --- Neutres --- */
+  --textes-secondaire: #4a4a4a;
+  --bordures: #e6ebf0;
+  --lumiere: #f3f8ff;
+  --neutre-surface: #f0f1f2;
+  --neutre: #ffffff;
+
+  /* --- Nuances bleu principal --- */
+  --bleu-nav-10: #eef0f5;
+  --bleu-nav-25: #c5cbe0;
+  --bleu-nav-40: #9ba5c9;
+  --bleu-nav-55: #717fb2;
+  --bleu-nav-dark: #161f3e;
+
+  /* --- Nuances bleu secondaire --- */
+  --bleu-action-10: #eaf3fb;
+  --bleu-action-30: #99c2f2;
+  --bleu-action-55: #3386e5;
+  --bleu-action-dark: #004fa9;
+
+  /* --- Nuances rouge --- */
+  --rouge-10: #fae8eb;
+  --rouge-30: #e87b8c;
+  --rouge-dark: #9a0c22;
+  /* Rouges spécifiques aux maquettes (CTA header / boutons ronds des cartes) */
+  --rouge-cta: #dc0025;
+  --rouge-card: #b71618;
+
+  /* --- Gris ardoise propres aux maquettes marketing --- */
+  --ardoise: #64748b; /* paragraphes de section */
+  --ardoise-fonce: #1e293b; /* listes à puces cochées */
+  --ardoise-surface: #f8fafc; /* fond de la grille de fonctionnalités */
+  --ardoise-bordure: #e2e8f0; /* contour des cartes de fonctionnalités */
+  --icone-fond: rgba(37, 99, 235, 0.06); /* pastille d'icône */
+  --ardoise-surface-2: #f9fafb; /* fond de la section Innovation */
+  --ardoise-texte: #475569; /* paragraphes des pages d'audience */
+  --ardoise-fond: #f1f5f9; /* fond « Features you can rely on » */
+  --marine-profond: #1a2744; /* titres de section sur fond ardoise */
+  --rouge-cta-clair: #e63946; /* CTA principal sur fond photo */
+  --voile-bleu-opaque: rgba(33, 49, 99, 0.9); /* voile de la section manifeste */
+  --texte-sur-voile: rgba(255, 255, 255, 0.7);
+  --voile-bleu: rgba(33, 49, 99, 0.75); /* voile appliqué aux photos */
+  --texte-sur-photo: rgba(255, 255, 240, 0.88);
+
+  /* --- Statuts --- */
+  /* La variable Figma « Green Valide » vaut #1aa41d, pas le #28a745 de la charte :
+     c'est elle qui borde les cartes d'innovation. */
+  --green-valide: #1aa41d;
+  --succes: #28a745;
+  --attention: #f59e0b;
+  --erreur: #c8102e;
+  --information: #0066dc;
+
+  /* --- Typographie --- */
+  --font-family: 'Inter', Arial, Helvetica, sans-serif;
+  --leading-tight: 1.211; /* interlignage Figma des titres */
+  --leading-body: 1.5;
+
+  /* --- Rayons --- */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 10px;
+  --radius-2xl: 12px;
+  --radius-3xl: 16px;
+  --radius-full: 9999px;
+
+  /* --- Espacements (base 4px) --- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* --- Ombres --- */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.08);
+  --shadow-base: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+  /* « Drop Shadow » de la maquette */
+  --shadow-card: 0 4px 12.2px 0 rgba(33, 49, 99, 0.1);
+
+  /* --- Mise en page --- */
+  --page-max: 1440px;
+  --content-max: 1200px;
+  --gutter: 120px;
+  --header-height: 79px;
+}
+
+@media (max-width: 1200px) {
+  :root {
+    --gutter: 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --gutter: 20px;
+  }
+}
