@@ -99,7 +99,8 @@ function headerMarkup() {
           <button
             class="nav-toggle"
             type="button"
-            aria-controls="main-nav"
+            data-nav-open
+            aria-controls="mobile-drawer"
             aria-expanded="false"
             data-i18n-aria-label="nav.openMenu"
             aria-label="Open the menu"
@@ -113,7 +114,51 @@ function headerMarkup() {
         <div class="site-submenu__inner">${sub}
         </div>
       </div>
-    </header>`;
+    </header>
+
+    <div class="nav-overlay" data-nav-overlay data-open="false"></div>
+
+    <nav class="mobile-drawer" id="mobile-drawer" aria-label="Menu" data-open="false" aria-hidden="true">
+      <div class="mobile-drawer__top">
+        <a class="btn btn--principal mobile-drawer__login" href="#login" data-i18n="nav.login"></a>
+        <button
+          class="nav-toggle mobile-drawer__close"
+          type="button"
+          data-nav-close
+          aria-controls="mobile-drawer"
+          aria-expanded="false"
+          data-i18n-aria-label="nav.closeMenu"
+          aria-label="Close the menu"
+        >
+          <span class="nav-toggle__bar"></span>
+        </button>
+      </div>
+
+      <div class="mobile-drawer__body">
+        <div class="mobile-drawer__group">
+          <p class="mobile-drawer__title" data-i18n="nav.profile"></p>${SUBNAV.map(
+            (item) => `
+          <a class="mobile-drawer__item" href="${item.href}"${current(item.page)} data-i18n="${item.key}"></a>`
+          ).join('')}
+        </div>
+
+        <a class="mobile-drawer__link" href="innovations.html"${current('innovations')} data-i18n="nav.innovations"></a>
+        <a class="mobile-drawer__link" href="about.html"${current('about')} data-i18n="nav.about"></a>
+        <button class="mobile-drawer__link mobile-drawer__lang" type="button" data-lang-toggle-word></button>
+      </div>
+
+      <div class="mobile-drawer__footer">${FOOTER_LINKS.filter(
+        (item) => item.page !== 'innovations' && item.page !== 'about'
+      )
+        .map((item) => {
+          const attrs = item.external ? ' target="_blank" rel="noopener"' : '';
+          return `
+        <a class="mobile-drawer__foot-link" href="${item.href}"${attrs} data-i18n="${item.key}"></a>`;
+        })
+        .join('')}
+        <img class="mobile-drawer__logo" src="assets/logo-touchbase-footer.svg" alt="" aria-hidden="true" />
+      </div>
+    </nav>`;
 }
 
 function footerMarkup() {

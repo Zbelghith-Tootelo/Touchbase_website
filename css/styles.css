@@ -427,6 +427,155 @@ ul {
   transform: rotate(-45deg);
 }
 
+/* --- Fond assombri derrière le panneau --- */
+
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: var(--bleu-principal);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.32s ease, visibility 0.32s ease;
+}
+
+.nav-overlay[data-open='true'] {
+  opacity: 0.45;
+  visibility: visible;
+}
+
+/* --- Panneau de navigation mobile : coulisse depuis la gauche --- */
+
+.mobile-drawer {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 70;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-6);
+  width: 262px;
+  max-width: 85vw;
+  padding: var(--space-16) var(--space-5) 30px;
+  background: var(--neutre);
+  border-radius: 0 20px 20px 0;
+  box-shadow: var(--shadow-md);
+  overflow-y: auto;
+  transform: translateX(-100%);
+  transition: transform 0.32s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.mobile-drawer[data-open='true'] {
+  transform: translateX(0);
+}
+
+.mobile-drawer__top {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.nav-toggle.mobile-drawer__close {
+  width: 32px;
+  height: 42px;
+  border: none;
+  border-radius: 0;
+}
+
+.mobile-drawer__login {
+  flex: 1 1 0;
+  height: 42px;
+}
+
+.mobile-drawer__body {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-4);
+}
+
+.mobile-drawer__group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+.mobile-drawer__title {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: normal;
+  color: var(--bleu-principal);
+}
+
+.mobile-drawer__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 40px;
+  padding: 0 10px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+  color: var(--bleu-principal);
+  text-align: center;
+  border-bottom: 1px solid var(--bordures);
+}
+
+.mobile-drawer__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: normal;
+  color: var(--bleu-principal);
+  text-align: center;
+  border-bottom: 1px solid var(--bordures);
+}
+
+.mobile-drawer__lang {
+  cursor: pointer;
+}
+
+.mobile-drawer__footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+}
+
+.mobile-drawer__foot-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+  color: var(--bleu-principal);
+  text-align: center;
+  border-bottom: 1px solid var(--bordures);
+}
+
+.mobile-drawer__logo {
+  width: 126px;
+  height: auto;
+  margin-top: var(--space-1);
+}
+
+@media (min-width: 1025px) {
+  .nav-overlay,
+  .mobile-drawer {
+    display: none;
+  }
+}
+
 /* --------------------------------------------------------------------------
    4. Héro — « Une solution pour chaque acteur »
    -------------------------------------------------------------------------- */
@@ -2948,52 +3097,9 @@ ul {
     gap: var(--space-3);
   }
 
-  /* La navigation devient un panneau déroulant sous l'en-tête */
+  /* La navigation de bureau s'efface : le panneau coulissant prend le relais. */
   .main-nav {
-    position: absolute;
-    top: var(--header-height);
-    left: 0;
-    right: 0;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-    padding: var(--space-2) var(--gutter) var(--space-4);
-    background: var(--neutre);
-    border-bottom: 1px solid var(--bordures);
-    box-shadow: var(--shadow-base);
     display: none;
-  }
-
-  .main-nav[data-open='true'] {
-    display: flex;
-  }
-
-  .main-nav__link {
-    justify-content: space-between;
-    border-bottom: 1px solid var(--bordures);
-  }
-
-  /* Sur mobile le sous-menu se déplie sous son lien plutôt que de recouvrir la page. */
-  .site-submenu {
-    position: static;
-    padding: 0 var(--gutter) var(--space-4);
-    border-bottom: none;
-    box-shadow: none;
-  }
-
-  .site-submenu__inner {
-    flex-direction: column;
-    max-width: none;
-  }
-
-  .site-submenu__link {
-    justify-content: flex-start;
-    height: 44px;
-    padding: 0 0 0 var(--space-4);
-  }
-
-  .site-submenu__link::after {
-    left: var(--space-4);
   }
 
   .hero__title {

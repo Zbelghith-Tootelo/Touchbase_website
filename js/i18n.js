@@ -18,7 +18,9 @@ const TRANSLATIONS = {
     'nav.login': 'Login',
     'nav.logoAlt': 'Touchbase',
     'nav.openMenu': 'Open the menu',
+    'nav.closeMenu': 'Close the menu',
     'nav.langSwitch': 'Switch to French',
+    'nav.langSwitchWord': 'French',
     'nav.about': 'About us',
 
     /* --- Sous-menu « Your Profile » --- */
@@ -449,7 +451,9 @@ const TRANSLATIONS = {
     'nav.login': 'Connexion',
     'nav.logoAlt': 'Touchbase',
     'nav.openMenu': 'Ouvrir le menu',
+    'nav.closeMenu': 'Fermer le menu',
     'nav.langSwitch': 'Passer en anglais',
+    'nav.langSwitchWord': 'Anglais',
     'nav.about': 'À propos',
 
     /* --- Sous-menu « Votre profil » --- */
@@ -915,6 +919,12 @@ function applyLang(lang) {
     btn.setAttribute('aria-label', translate('nav.langSwitch', lang));
   });
 
+  // Variante « menu mobile » : le nom complet de la langue plutôt que son code.
+  document.querySelectorAll('[data-lang-toggle-word]').forEach((btn) => {
+    btn.textContent = translate('nav.langSwitchWord', lang);
+    btn.setAttribute('aria-label', translate('nav.langSwitch', lang));
+  });
+
   try {
     localStorage.setItem(STORAGE_KEY, lang);
   } catch (e) {
@@ -935,7 +945,7 @@ function currentLang() {
 function initI18n() {
   applyLang(currentLang());
 
-  document.querySelectorAll('[data-lang-toggle]').forEach((btn) => {
+  document.querySelectorAll('[data-lang-toggle], [data-lang-toggle-word]').forEach((btn) => {
     btn.addEventListener('click', () => {
       applyLang(OTHER_LANG[currentLang()]);
     });

@@ -2,30 +2,73 @@
    Touchbase — Comportements de l'interface
    ========================================================================== */
 
-/** Menu de navigation mobile : ouverture / fermeture. */
+/** Menu de navigation mobile : panneau coulissant depuis la gauche. */
 function initNavToggle() {
-  const toggle = document.querySelector('.nav-toggle');
-  const nav = document.getElementById('main-nav');
-  if (!toggle || !nav) return;
+  const toggle = document.querySelector('[data-nav-open]');
+  const closeBtn = document.querySelector('[data-nav-close]');
+  const drawer = document.getElementById('mobile-drawer');
+  const overlay = document.querySelector('[data-nav-overlay]');
+  if (!toggle || !drawer || !overlay) return;
+
+  let lastFocused = null;
+
+  const focusableIn = (root) =>
+    Array.from(root.querySelectorAll('a[href], button:not([disabled])')).filter(
+      (el) => el.offsetParent !== null
+    );
 
   const setOpen = (open) => {
     toggle.setAttribute('aria-expanded', String(open));
-    nav.dataset.open = String(open);
+    if (closeBtn) closeBtn.setAttribute('aria-expanded', String(open));
+    drawer.dataset.open = String(open);
+    drawer.setAttribute('aria-hidden', String(!open));
+    overlay.dataset.open = String(open);
+    document.body.style.overflow = open ? 'hidden' : '';
+
+    if (open) {
+      lastFocused = document.activeElement;
+      const first = focusableIn(drawer)[0];
+      if (first) first.focus();
+    } else if (lastFocused) {
+      lastFocused.focus();
+      lastFocused = null;
+    }
   };
 
   toggle.addEventListener('click', () => {
     setOpen(toggle.getAttribute('aria-expanded') !== 'true');
   });
 
-  // Refermer après un clic sur un lien, ou avec Échap.
-  nav.addEventListener('click', (event) => {
-    if (event.target.closest('.main-nav__link')) setOpen(false);
+  if (closeBtn) closeBtn.addEventListener('click', () => setOpen(false));
+
+  // Un clic sur le fond assombri referme, tout comme un clic sur un lien.
+  overlay.addEventListener('click', () => setOpen(false));
+  drawer.addEventListener('click', (event) => {
+    if (event.target.closest('a')) setOpen(false);
   });
 
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+    if (drawer.dataset.open !== 'true') return;
+
+    if (event.key === 'Escape') {
       setOpen(false);
       toggle.focus();
+      return;
+    }
+
+    // Le focus reste piégé dans le panneau tant qu'il est ouvert.
+    if (event.key === 'Tab') {
+      const items = focusableIn(drawer);
+      if (!items.length) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     }
   });
 
